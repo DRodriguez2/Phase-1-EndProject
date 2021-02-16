@@ -1,9 +1,11 @@
+package main;
+
+import functions.Menu;
 
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Menu.showMainMenu();
 	}
 
 }
