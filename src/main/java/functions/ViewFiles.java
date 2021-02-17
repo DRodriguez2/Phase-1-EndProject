@@ -3,12 +3,10 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import utilities.Utility;
-
-public class ViewFiles extends Utility {
+public class ViewFiles {
 	
-	public void showFiles() {
-		File directory = new File(DIRECTORY);
+	public void showFiles(String _directory) {
+		File directory = new File(_directory);
 		List<String> list = Arrays.asList(directory.list());
 		System.out.println("List of All Files: ");
 		

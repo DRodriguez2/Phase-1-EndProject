@@ -40,22 +40,22 @@ public class Menu extends Utility {
 		switch(_option) {
 		
 		case "1": 
-			viewFiles.showFiles();
+			viewFiles.showFiles(DIRECTORY);
 			showSubMenu();
 			break;
 		case "2": 
 			System.out.println("Enter the name of the file to create: \n");
-			addFile.add();
+			addFile.add(handleUserInput(), DIRECTORY);
 			showSubMenu();
 			break;
 		case "3": 
 			System.out.println("Enter the name of the file to delete: \n");
-			deleteFile.delete();
+			deleteFile.delete(handleUserInput(), DIRECTORY);
 			showSubMenu();
 			break;
 		case "4": 
 			System.out.println("Enter the name of the file to search for: \n");
-			searchFile.search();
+			searchFile.search(handleUserInput(), DIRECTORY);
 			showSubMenu();
 			break;
 		case "5": 

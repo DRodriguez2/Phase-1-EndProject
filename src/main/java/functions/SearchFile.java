@@ -3,16 +3,13 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import utilities.Utility;
+public class SearchFile {
 
-public class SearchFile extends Utility {
-
-	public void search() {
-		String fileName = handleUserInput();
-		File directory = new File(DIRECTORY);
+	public void search(String _fileName, String _directory) {
+		File directory = new File(_directory);
 		List<String> list = Arrays.asList(directory.list());
 		
-		if(list.stream().anyMatch(n -> n.equals(fileName))) {
+		if(list.stream().anyMatch(n -> n.equals(_fileName))) {
 			System.out.println("File found");
 		}
 		else System.out.println("File not found");

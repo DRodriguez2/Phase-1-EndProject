@@ -10,7 +10,7 @@ public class Utility {
 	
 	//This is the directory path to the folder where all the files should be located. 
 	//Change if needed.
-	public final String DIRECTORY = System.getProperty("user.dir") + "\\FILESAREHERE";
+	public final static String DIRECTORY = System.getProperty("user.dir") + "\\FILESAREHERE";
 	
 	
 	public static String handleUserInput() {
