@@ -33,13 +33,20 @@ public class Menu extends Utility {
 		System.out.println("\n6) Return to main menu \n");
 		System.out.println("7) Exit \n");
 		
-		handleOption(handleUserInput());
+		String  input = handleUserInput();
+		if (input.equals("6") || input.equals("7")) {
+			handleOption(input);
+		} else {
+			handleOption("INVALID");
+		}
+		
 	}
 	
 	protected static void handleOption(String _option) {
 		switch(_option) {
 		
 		case "1": 
+			System.out.println("Listing Files in directory: " + DIRECTORY + "\n");
 			viewFiles.showFiles(DIRECTORY);
 			showSubMenu();
 			break;
@@ -67,7 +74,7 @@ public class Menu extends Utility {
 			showMainMenu();
 			break;
 		default: 
-			System.out.println("Invalid option");
+			System.out.println("Invalid option, returning to main menu.");
 			showMainMenu();
 			
 		}
