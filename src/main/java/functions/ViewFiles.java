@@ -9,33 +9,32 @@ public class ViewFiles {
 	public void showFiles(String _directory) {
 		File directory = new File(_directory);
 		List<String> list = Arrays.asList(directory.list());
-		String[] fileNames = (String[])list.toArray();
-		mergeSort(fileNames, 0, fileNames.length-1);
+		String[] fileNames = (String[]) list.toArray();
+		mergeSort(fileNames, 0, fileNames.length - 1);
 
 		// check if stream is empty and print accordingly
 		if (list.stream().findAny().isPresent())
 			list.stream().forEach(n -> System.out.println(n));
 		else
 			System.out.println("Empty Directory");
-		
-		
+
 		/**
-		 * Code for testing merge sort algorithm.
-		 * This program was developed on a windows 10 machine which automatically 
-		 * sorts files in a directory by file name in ascending order. So it is
-		 * trivial to sort the files above because they are already sorted. 
-		 * But for the assignment's sake/practice I implemented a merge sort that works too.
+		 * This program was developed on a windows 10 machine which automatically sorts
+		 * files in a directory by file name in ascending order. So it is trivial to
+		 * sort the files above because they are already sorted. But for the
+		 * assignment's sake/practice I implemented a merge sort that works too.
+		 * See unit test for testing mergeSort with unsorted data.
 		 */
-//		String[] arr = new String[] {"xyz", "uvw", "rst", "opq", "lmn", "ijk", "fgh", "def", "abc"};
-//		mergeSort(arr, 0, arr.length-1);
-//		for(String s : arr) System.out.print(s + " ");
-//		System.out.println("\n");
-		
+
 	}
-	
+
 	public static void mergeSort(String[] arr, int low, int high) {
 
+		// find the correct mid point relative to the low and high indices.
 		int mid = low + (high - low) / 2;
+
+		// Set condition to prevent infinite recursion and recursively call merge sort.
+		// Call merge once the bottom of the recursion tree is reached.
 		if (low < high) {
 			mergeSort(arr, low, mid);
 			mergeSort(arr, mid + 1, high);
@@ -61,15 +60,14 @@ public class ViewFiles {
 			}
 		}
 		/*
-		 * i is a pointer for the original array j is a pointer for the left sub array k
-		 * is a pointer for the right sub array Compare the elements from the left and
+		 * i is a pointer for the original array, j is a pointer for the left sub array,
+		 * k is a pointer for the right sub array Compare the elements from the left and
 		 * right sub arrays, putting the smaller element into the original array at
-		 * index i. i is incremented everytime an element is inserted.
+		 * index i. i is incremented every time an element is inserted.
 		 */
 		int i = low, j = 0, k = 0;
 		while (j < leftSubarray.length && k < rightSubarray.length) {
-			//if (leftSubarray[j] <= rightSubarray[k]) {
-			if(rightSubarray[k].compareTo(leftSubarray[j]) > 0) {
+			if (rightSubarray[k].compareTo(leftSubarray[j]) > 0) {
 				arr[i] = leftSubarray[j];
 				j++;
 			} else {
@@ -79,6 +77,14 @@ public class ViewFiles {
 			i++;
 		}
 
+		/**
+		 * Once either sub array has inserted all their elements into the original array
+		 * the while loop above will end. In which case the remaining elements of the
+		 * other sub array should be inserted into the original array, which is done in
+		 * the while loops below. The elements being inserted at this point are
+		 * guaranteed to already be sorted because both sub arrays should already be
+		 * sorted.
+		 */
 		while (j < leftSubarray.length) {
 			arr[i] = leftSubarray[j];
 			j++;
